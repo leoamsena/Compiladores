@@ -1,0 +1,17 @@
+:DECLARACOES
+num:INTEIRO
+fat:INTEIRO
+
+:ALGORITMO
+LER num
+ATRIBUIR num A fat
+
+SE num = 0 ENTAO 
+ATRIBUIR 1 A fat
+
+ENQUANTO num > 1
+	INICIO
+		ATRIBUIR fat * (num - 1) A fat
+		ATRIBUIR num - 1 A num
+	FIM
+IMPRIMIR fat

@@ -1,0 +1,29 @@
+:DECLARACOES
+num:INTEIRO
+aux1:INTEIRO
+aux2:INTEIRO
+aux3:INTEIRO
+soma:INTEIRO
+i:INTEIRO
+
+:ALGORITMO
+ATRIBUIR 2 A i
+ATRIBUIR 1 A aux1
+ATRIBUIR 1 A aux2 
+ATRIBUIR 0 A aux3
+
+LER num
+
+ATRIBUIR aux1+aux2 A soma
+SE num < 2
+ATRIBUIR aux1 A soma
+ENQUANTO i < num
+	INICIO
+ATRIBUIR aux1 + aux2 A aux3
+ATRIBUIR aux2 A aux1
+ATRIBUIR aux3 A aux2
+ATRIBUIR aux3 + soma A soma
+ATRIBUIR i+1 A i
+FIM
+
+IMPRIMIR soma

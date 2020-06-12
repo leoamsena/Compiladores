@@ -1,0 +1,6 @@
+:DECLARACOES
+num:INTEIRA
+
+:ALGORITMO
+LER num
+
