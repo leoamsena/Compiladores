@@ -1,0 +1,76 @@
+#Options
+GenerateScanner = true
+GenerateParser = true
+Language = Java
+ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = Stream
+Parser = SLR
+#RegularDefinitions
+letras: [A-Za-z]
+numeros: [0-9]
+ws: [\n\s\r\t]
+
+
+#Tokens
+DEC: DECLARACOES
+FIM: FIM
+A: A
+ALG: ALGORITMO
+INT: INTEIRO
+REA: REAL
+ATR: ATRIBUIR
+LER: LER
+IMP: IMPRIMIR
+SE: SE
+ENT: ENTAO
+ENQ: ENQUANTO
+INI: INICIO
+OpArit: (\*|/|\+|\-)
+OpRel: ((<|>)?=?)|<>
+OpBool: (E|OU)
+Delim: :
+Var: [a-z]+({letras}|{numeros})*
+NumI: {numeros}+
+NumR: {numeros}+,{numeros}+
+Str: "{letras}"
+AP: \(
+FP: \)
+: {ws}
+#NonTerminals
+<PROGRAMA>
+<BLOCOALG>
+<STMT>
+<SE>
+<ENQUANTO>
+<LER>
+<IMPRIMIR>
+<ATRIBUIR>
+<STMT_LIST>
+<E>
+<BLOCODEC>
+<DEC>
+<DEC_LIST>
+<TIPOS>
+<OP_MAT>
+<PA>
+#Grammar
+<PROGRAMA> ::= <BLOCOALG> | <BLOCODEC> <BLOCOALG>;
+<BLOCOALG> ::= Delim ALG <STMT_LIST>;
+<STMT> ::= <SE> | <ENQUANTO> | <LER> | <IMPRIMIR>|<ATRIBUIR>;
+<STMT_LIST> ::= <STMT> <STMT_LIST> | î;
+<E> ::= Var | NumI | NumR| <OP_MAT>| AP <PA>;
+<PA> ::= <E> FP;
+<OP_MAT> ::= <E> OpArit <E>;
+<SE> ::= SE <E> OpRel <E> ENT INI <STMT_LIST> FIM | SE <E> OpRel <E> ENT <STMT>;
+<ENQUANTO> ::= ENQ <E> OpRel <E> INI <STMT_LIST> FIM;
+<LER> ::= LER Var;
+<ATRIBUIR> ::= ATR <E> A Var;
+<IMPRIMIR> ::= IMP Var;
+<BLOCODEC> ::= Delim DEC <DEC_LIST>;
+<DEC_LIST> ::= <DEC> <DEC_LIST>| î;
+<DEC> ::= Var Delim <TIPOS>;
+<TIPOS> ::= INT|REA;

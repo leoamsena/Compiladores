@@ -1,0 +1,8 @@
+:DECLARACOES
+num1:INTEIRO
+num2:INTEIRO
+
+:ALGORITMO
+LER num1 num2
+LER num2
+IMPRIMIR num1 + num2
